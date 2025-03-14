@@ -23,7 +23,7 @@ class LoginController extends Controller
                 'client_secret' => $request->client_secret,
             ];
 
-            $response = Http::asForm()->post(config('app.url').'/oauth/token', $data);
+            $response = Http::asForm()->post(config('app.oauth_url').'/oauth/token', $data);
             $token = json_decode($response->getBody(), false, 512, JSON_THROW_ON_ERROR);
 
             if ($response->failed()) {
